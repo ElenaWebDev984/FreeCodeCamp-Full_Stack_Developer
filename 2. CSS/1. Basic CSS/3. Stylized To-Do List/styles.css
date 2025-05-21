@@ -6,6 +6,9 @@ body {
 .container {
     max-width: 600px;
     margin: 100px auto;
+    background-color: #a0e2e2;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 h1 {
@@ -18,12 +21,6 @@ ul {
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-
-.wrapper {
-    background-color: #a0e2e2;
-    padding: 20px;
-    border-radius: 10px;
 }
 
 li {
