@@ -1,0 +1,59 @@
+tr[class="read"] {
+    background-image: linear-gradient(#EBF7E3, #9BD770);
+}
+
+tr[class="to-read"] {
+    background-image: linear-gradient(#66B032, #375F1B);
+}
+
+tr[class="in-progress"] {
+    background-image: linear-gradient(#EBF7E3, #1B3409);
+}
+
+span {
+    display: inline-block;
+}
+
+tr[class="to-read"] span[class="status"] {
+    border: 3px solid purple;
+    background-image: url("#");
+}
+
+tr[class="in-progress"] span[class="status"] {
+    border: 3px solid purple;
+    background-image: url("#");
+}
+
+tr[class="read"] span[class="status"] {
+    border: 3px solid purple;
+    background-image: url("#");
+}
+
+span[class="status"],
+span[class^="rate"] {
+    height: 1em;
+    width: 1em;
+    padding: 5px;
+}
+
+span[class^="rate"] > span {
+    border: 3px solid red;
+    border-radius: 5px;
+    margin: 0 auto;
+    height: 5px;
+    width: 5px;
+    background-color: #fff;
+}
+
+span[class~="one"] :first-child {
+    background-image: linear-gradient(white, black);
+}
+
+span[class~="two"] :nth-child(1),
+span[class~="two"] :nth-child(2) {
+    background-image: linear-gradient(white, black);
+}
+
+span[class~="three"] span {
+    background-image: linear-gradient(white, black);
+}
