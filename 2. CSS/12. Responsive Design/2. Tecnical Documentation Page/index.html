@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Functions</title>
+</head>
+<body>
+<main id="main-doc">
+    <nav id="navbar">
+        <header>Functions JS</header>
+        <ul>
+            <li>
+                <a class="nav-link" href="#Functions">Functions</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Defining_functions">Defining functions</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Calling_functions">Calling functions</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Function_scope">Function scope</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Scope_and_the_function_stack">Scope and the function stack</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Closures">Closures</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Using_the_arguments_object">Using the arguments object</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Function_parameters">Function parameters</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Arrow_functions">Arrow functions</a>
+            </li>
+        </ul>
+    </nav>
+    <section class="main-section" id="Functions">
+        <header>Functions</header>
+        <p>Functions are one of the fundamental building blocks in JavaScript. A function in JavaScript is similar to a
+            procedure—a set of statements that performs a task or calculates a value, but for a procedure to qualify as
+            a function, it should take some input and return an output where there is some obvious relationship between
+            the input and the output. To use a function, you must define it somewhere in the scope from which you wish
+            to call it.</p>
+    </section>
+    <section class="main-section" id="Defining_functions">
+        <header>Defining functions</header>
+        <h2>Function declarations</h2>
+        <p>A function definition (also called a function declaration, or function statement) consists of the function
+            keyword, followed by:</p>
+        <ul>
+            <li>The name of the function.</li>
+            <li>A list of parameters to the function, enclosed in parentheses and separated by commas.</li>
+            <li>The JavaScript statements that define the function, enclosed in curly braces, { /* … */ }.</li>
+        </ul>
+        <h2>Function expressions</h2>
+        <p>While the function declaration above is syntactically a statement, functions can also be created by a
+            function expression.</p>
+        <code>function square(number) {
+            return number * number;
+            }
+        </code>
+    </section>
+    <section class="main-section" id="Calling_functions">
+        <header>Calling functions</header>
+        <p>Defining a function does not execute it. Defining it names the function and specifies what to do when the
+            function is called.
+            <br><br>
+            Calling the function actually performs the specified actions with the indicated parameters. For example, if
+            you define the function square, you could call it as follows:</p>
+        <code>square(5);
+        </code>
+        <h2>Function hoisting</h2>
+        <p>Consider the example below:</p>
+        <code>console.log(square(5)); // 25
+
+            function square(n) {
+            return n * n;
+            }
+        </code>
+        <p>Function hoisting only works with function declarations — not with function expressions. </p>
+    </section>
+    <section class="main-section" id="Function_scope">
+        <header>Function scope</header>
+        <p>Variables defined inside a function cannot be accessed from anywhere outside the function, because the
+            variable is defined only in the scope of the function. However, a function can access all variables and
+            functions defined inside the scope in which it is defined.</p>
+        <p>In other words, a function defined in the global scope can access all variables defined in the global scope.
+            A function defined inside another function can also access all variables defined in its parent function, and
+            any other variables to which the parent function has access.</p>
+        <code>// The following variables are defined in the global scope
+            const num1 = 20;
+            const num2 = 3;
+            const name = "Chamakh";
+
+            // This function is defined in the global scope
+            function multiply() {
+            return num1 * num2;
+            }
+
+            console.log(multiply()); // 60
+
+            // A nested function example
+            function getScore() {
+            const num1 = 2;
+            const num2 = 3;
+
+            function add() {
+            return `${name} scored ${num1 + num2}`;
+            }
+
+            return add();
+            }
+
+            console.log(getScore()); // "Chamakh scored 5"
+        </code>
+    </section>
+    <section class="main-section" id="Scope_and_the_function_stack">
+        <header>Scope and the function stack</header>
+        <h2>Recursion</h2>
+        <p>A function can refer to and call itself. There are three ways for a function to refer to itself:</p>
+        <ol>
+            <li>The function's name</li>
+            <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">arguments.callee</a>
+            </li>
+            <li>An in-scope variable that refers to the function</li>
+        </ol>
+        <p>For example, consider the following function definition:</p>
+        <code>const foo = function bar() {
+            // statements go here
+            };
+        </code>
+        <h3>Nested functions and closures</h3>
+        <p>You may nest a function within another function. The nested (inner) function is private to its containing
+            (outer) function.</p>
+        <p>It also forms a closure. A closure is an expression (most commonly, a function) that can have free variables
+            together with an environment that binds those variables (that "closes" the expression).</p>
+        <p>Since a nested function is a closure, this means that a nested function can "inherit" the arguments and
+            variables of its containing function. In other words, the inner function contains the scope of the outer
+            function.</p>
+        <span>To summarize:</span>
+        <ul>
+            <li>The inner function can be accessed only from statements in the outer function.</li>
+            <li>The inner function forms a closure: the inner function can use the arguments and variables of the outer
+                function, while the outer function cannot use the arguments and variables of the inner function.
+            </li>
+        </ul>
+    </section>
+    <section class="main-section" id="Closures">
+        <header>Closures</header>
+        <p>Closures are one of the most powerful features of JavaScript. JavaScript allows for the nesting of functions
+            and grants the inner function full access to all the variables and functions defined inside the outer
+            function (and all other variables and functions that the outer function has access to).</p>
+        <p>However, the outer function does not have access to the variables and functions defined inside the inner
+            function. This provides a sort of encapsulation for the variables of the inner function.</p>
+        <p>Also, since the inner function has access to the scope of the outer function, the variables and functions
+            defined in the outer function will live longer than the duration of the outer function execution, if the
+            inner function manages to survive beyond the life of the outer function. A closure is created when the inner
+            function is somehow made available to any scope outside the outer function.</p>
+        <code>// The outer function defines a variable called "name"
+            const pet = function (name) {
+            const getName = function () {
+            // The inner function has access to the "name" variable of the outer function
+            return name;
+            };
+            return getName; // Return the inner function, thereby exposing it to outer scopes
+            };
+            const myPet = pet("Vivie");
+
+            console.log(myPet()); // "Vivie"
+        </code>
+    </section>
+    <section class="main-section" id="Using_the_arguments_object">
+        <header>Using the arguments object</header>
+        <p>The arguments of a function are maintained in an array-like object. </p>
+        <p>Using the arguments object, you can call a function with more arguments than it is formally declared to
+            accept. This is often useful if you don't know in advance how many arguments will be passed to the function.
+            You can use arguments.length to determine the number of arguments actually passed to the function, and then
+            access each argument using the arguments object.</p>
+    </section>
+    <section class="main-section" id="Function_parameters">
+        <header>Function parameters</header>
+        <p>There are two special kinds of parameter syntax: default parameters and rest parameters.</p>
+        <h2>Default parameters</h2>
+        <p>In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful
+            to set a different default value. This is exactly what default parameters do.</p>
+        <p>In the past, the general strategy for setting defaults was to test parameter values in the body of the
+            function and assign a value if they are undefined.</p>
+        <h2>Rest parameters</h2>
+        <p>The rest parameter syntax allows us to represent an indefinite number of arguments as an array.</p>
+    </section>
+    <section class="main-section" id="Arrow_functions">
+        <header>Arrow functions</header>
+        <p>An arrow function expression (also called a fat arrow to distinguish from a hypothetical -> syntax in future
+            JavaScript) has a shorter syntax compared to function expressions and does not have its own this, arguments,
+            super, or new.target. Arrow functions are always anonymous.</p>
+        <p>Two factors influenced the introduction of arrow functions: shorter functions and non-binding of this.</p>
+    </section>
+</main>
+</body>
+</html>
