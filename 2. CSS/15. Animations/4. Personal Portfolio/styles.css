@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    min-width: 375px;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    max-width: 1170px;
+    padding-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid red;
+/ / ПОТОМ УДАЛИТЬ
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #a50f16;
+    z-index: 1000;
+    padding: 14px 0;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 50px;
+}
+
+@media screen and (max-width: 576px) {
+}
